@@ -46,6 +46,31 @@ public class ArrayQuestions {
         System.out.println(" ========== ");
         System.out.println(updateEmployeeAddress(employeeList,"Hambantota","Colombo"));
 
+        int[] numbersArr = { 5, 2, 8, 2, 5, 10, 8 };
+        System.out.println(" ========== ");
+        System.out.println(numbersArr.length);
+        for (int num: removeDuplicateValues(numbersArr) ){
+            System.out.println(num);
+        }
+
+        List<Integer> numbersData = new ArrayList<>();
+        numbersData.add(5);
+        numbersData.add(8);
+        numbersData.add(2);
+        numbersData.add(5);
+        numbersData.add(3);
+        numbersData.add(8);
+        numbersData.add(5);
+
+        System.out.println("ArrayList: " + numbersData);
+
+        Map<Integer, Integer> oddFrequencyMap = oddNumberFrequency(numbersData);
+
+        System.out.println("Odd numbers and their frequency:");
+        for (Map.Entry<Integer, Integer> entry : oddFrequencyMap.entrySet()) {
+            System.out.println(entry.getKey() + " occurs " + entry.getValue() + " time(s)");
+        }
+
 
     }
 
@@ -136,8 +161,33 @@ public class ArrayQuestions {
         return updatedCount;
     }
 
-    public static void removeDuplicateValues(int[] numbers){
+    public static int[] removeDuplicateValues(int[] numbers){
+        Set<Integer> setValue = new HashSet<>();
+        StringBuilder result = new StringBuilder();
+        for (int num: numbers){
+            if (setValue.add(num)){
+                result.append(num).append(",");
+            }
+        }
 
+        String[] uniqueValues = result.toString().split(",");
+        int[] uniqueIntArray = new int[uniqueValues.length];
+
+        for (int i = 0; i < uniqueValues.length; i++) {
+            uniqueIntArray[i] = Integer.parseInt(uniqueValues[i]);
+        }
+        return uniqueIntArray;
+    }
+
+    public static Map<Integer, Integer>  oddNumberFrequency(List<Integer> arrayList){
+        Map<Integer, Integer> oddNumberFrequency = new HashMap<>();
+        for (Integer number : arrayList) {
+            if (number % 2 != 0) {
+                oddNumberFrequency.put(number, oddNumberFrequency.getOrDefault(number, 0) + 1);
+            }
+        }
+
+        return oddNumberFrequency;
     }
 
 }
