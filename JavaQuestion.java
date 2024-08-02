@@ -15,5 +15,10 @@ public class JavaQuestion {
             System.out.println(var2);
         }
 
+        VolatileExample volatileExample = new VolatileExample();
+
+        volatileExample.increment();
+        volatileExample.display();
+
     }
 }
