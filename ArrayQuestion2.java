@@ -49,5 +49,13 @@ public class ArrayQuestion2 {
         System.out.println(numArray2[n]/2);
 
 
+        //Object names = new String[3];
+        //names[0] = new Integer(0);
+        //ARRAY COPY
+        int newNumArray[] = new int[numArray2.length];
+        System.arraycopy(numArray2,0, newNumArray,0,numArray2.length);
+
+
+
     }
 }
